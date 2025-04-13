@@ -237,6 +237,10 @@
           "bytes": "bytes"
         }
       },
+      "ephemeralmacros": {
+        "title": "Ephemeral Macros",
+        "help": "Record a macro and play it back on the fly."
+      },
       "mousekeys": {
         "title": "Mouse control",
         "help": "Move the mouse with your keyboard",

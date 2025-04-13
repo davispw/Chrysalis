@@ -67,6 +67,7 @@ export const KeyPicker = (props) => {
 
   const mouseKeysAvailable = usePluginAvailable("MouseKeys");
   const dynamicMacrosAvailable = usePluginAvailable("DynamicMacros");
+  const ephemeralMacrosAvailable = usePluginAvailable("EphemeralMacros");
   const oneShotMetaDisabled = !usePluginAvailable("OneShotMetaKeys");
   const ledKeysDisabled = !props.colormap || props.colormap.palette.length == 0;
   const windowSize = useWindowSize();
@@ -118,7 +119,7 @@ export const KeyPicker = (props) => {
               <Tab value="mouse" label="Mouse" disabled={!mouseKeysAvailable} />
               <Tab value="language" label="Language" />
               <Tab value="control" label="Control" />
-              <Tab value="macros" label="Macros" disabled={!dynamicMacrosAvailable} />
+              <Tab value="macros" label="Macros" disabled={!dynamicMacrosAvailable && !ephemeralMacrosAvailable} />
               <Tab value="leds" label="LEDs" disabled={ledKeysDisabled} />
               <Tab value="layers" label="Layers" />
               <Tab value="advanced" label="Advanced" />
@@ -296,6 +297,10 @@ export const KeyPicker = (props) => {
             <Grid container spacing={0}>
               <Grid item xs>
                 <DynamicMacroKeys {...sharedProps} />
+              </Grid>
+              <VerticalSectionDivider />
+              <Grid item xs>
+                <FKPCategorySelector plugin="EphemeralMacros" category="ephemeralmacros" {...sharedProps} />
               </Grid>
               <VerticalSectionDivider />
               <Grid item xs>

@@ -287,6 +287,20 @@ const dynmacros = Array(32)
   .fill()
   .map((_, index) => dynmacro(index));
 
+const ephemeralmacros = assignKeysToCategory(
+  ["ephemeralmacros"],
+  [
+    {
+      code: constants.codes.RECORD_MACRO,
+      label: { hint: { full: "Ephemeral Macro", "1u": "Macro" }, base: "Record" }
+    },
+    {
+      code: constants.codes.PLAY_RECORDED_MACRO,
+      label: { hint: { full: "Ephemeral Macro", "1u": "Macro" }, base: "Play" }
+    },
+  ],
+);
+
 const leader = (index) => ({
   code: constants.ranges.leader.start + index,
   label: { hint: "Leader ", base: "#" + index.toString() },
@@ -607,6 +621,7 @@ const keyCodeTable = []
   .concat(mousekeys)
   .concat(macros)
   .concat(dynmacros)
+  .concat(ephemeralmacros)
   .concat(leaders)
   .concat(tapdances)
   .concat(stenokeys)
